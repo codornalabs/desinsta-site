@@ -1,0 +1,78 @@
+/* Desinsta · páginas legais (termos.html e privacidade.html). Usam o estilo.css do site (cores, fontes,
+   botões e rodapé) e este arquivo para o texto longo. Com ?app no endereço (é assim que o app abre a página),
+   somem o topo e o rodapé do site e fica só o texto. */
+
+/* o app abre só o texto */
+.no-app .pular, .no-app .topo, .no-app .rodape { display: none; }
+.no-app .doc { padding-top: 8px; }
+
+.pagina-legal .topo { position: static; }
+.pagina-legal .topo .botao-pilula { background: var(--branco); }
+
+.doc { max-width: 760px; margin: 0 auto; padding: 8px var(--calha-d) 72px var(--calha-e); }
+.doc-cabeca { padding: 24px 0 4px; }
+.doc-cabeca h1 { font-size: clamp(38px, 6.4vw, 60px); }
+.doc-data { margin-top: 16px; font-size: 15px; line-height: 1.5; color: var(--texto-apagado); }
+
+/* o resumo: um cartão de adesivo com os pontos principais */
+.resumo {
+  margin-top: 28px; padding: 22px 22px 24px; background: var(--branco);
+  border: 2.5px solid var(--tinta); border-radius: 22px; box-shadow: 4px 4px 0 var(--tinta);
+}
+.resumo h2 { font-size: 23px; }
+.resumo ul { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 12px; }
+.resumo li { position: relative; padding-left: 34px; }
+.resumo li::before {
+  content: ''; position: absolute; left: 0; top: .1em; width: 22px; height: 22px; border-radius: 50%;
+  border: 2px solid var(--tinta);
+  background: var(--verde) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M5.5 10.4l3 3 6-7' fill='none' stroke='%231B1530' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / 15px no-repeat;
+}
+
+/* o sumário */
+.sumario { margin-top: 32px; }
+.sumario h2 { font-size: 20px; }
+.sumario ol { margin: 12px 0 0; padding-left: 22px; columns: 1; column-gap: 32px; }
+.sumario li { break-inside: avoid; padding: 3px 0; font-size: 16px; }
+.sumario a { text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+@media (min-width: 640px) { .sumario ol { columns: 2; } }
+
+/* as partes do texto */
+.parte { margin-top: 44px; scroll-margin-top: 16px; }
+.parte h2 { font-size: clamp(25px, 3.4vw, 31px); }
+.parte h3 { font-size: 19px; }
+.parte p, .parte ul, .parte ol, .parte .doc-cartoes, .parte .perguntas { margin-top: 14px; }
+.parte ul, .parte ol { padding-left: 22px; }
+.parte li + li { margin-top: 8px; }
+.parte a { text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
+.parte b { font-weight: 600; }
+
+/* cartões (o que sai do celular, as permissões): o que, quem e para quê */
+.doc-cartoes { display: grid; gap: 14px; }
+.doc-cartao { padding: 16px 18px 18px; background: var(--branco); border: 2px solid var(--tinta); border-radius: 18px; box-shadow: 3px 3px 0 var(--tinta); }
+.doc-cartao-topo { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.doc-cartao dl { margin: 10px 0 0; display: grid; gap: 4px 16px; font-size: 16px; line-height: 1.5; }
+.doc-cartao dt { font-family: var(--f-titulo); font-weight: 600; font-size: 14px; letter-spacing: .01em; color: var(--texto-apagado); }
+.doc-cartao dd { margin: 0 0 6px; }
+.doc-cartao p { margin-top: 8px; font-size: 16px; }
+@media (min-width: 640px) {
+  .doc-cartao dl { grid-template-columns: 112px 1fr; }
+  .doc-cartao dt { padding-top: 2px; }
+  .doc-cartao dd { margin: 0; }
+}
+.doc-chip { display: inline-block; padding: 1px 10px; border: 1.5px solid var(--tinta); border-radius: 999px; background: var(--verde-claro); font-size: 13px; font-weight: 600; line-height: 22px; }
+
+/* um aviso dentro do texto (saúde, apagar o app) */
+.doc-aviso { padding: 14px 18px; background: var(--verde-claro); border: 2px solid var(--tinta); border-radius: 16px; }
+
+/* o que ainda falta preencher antes de publicar no domínio */
+mark.preencher { background: var(--amarelo); color: var(--tinta); padding: 0 4px; border-radius: 5px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+
+/* rodapé menor que o da página inicial (lá ele dá espaço para o botão que flutua) */
+.pagina-legal .rodape { padding-block: 32px calc(env(safe-area-inset-bottom, 0px) + 32px); }
+.pagina-legal .rodape-logo { width: min(300px, 70%); margin: 8px auto 24px; }
+
+@media print {
+  .pular, .topo, .rodape, .sumario { display: none; }
+  body { background: #fff; font-size: 12pt; }
+  .resumo, .doc-cartao { box-shadow: none; }
+}
