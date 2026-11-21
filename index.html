@@ -3,10 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Desinsta: recarregue a sua bateria mental</title>
-<meta name="description" content="O Desinsta transforma seu tempo de tela numa Bateria: o feed descarrega, a vida fora dele recarrega. Em breve no iPhone e no Android.">
+<title>desINSTA: recarregue a sua bateria mental</title>
+<meta name="description" content="O desINSTA transforma seu tempo de tela numa Bateria: o feed descarrega, a vida longe dele recarrega. Bloqueie os apps que mais te prendem e ganhe tempo de volta. 3 dias grátis.">
 <meta name="theme-color" content="#FFF6EA">
-<link rel="icon" href="assets/icone.svg" type="image/svg+xml">
+<link rel="icon" href="assets/icone-app.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/icone-180.png">
+<link rel="canonical" href="https://desinsta.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="desINSTA">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:url" content="https://desinsta.app/">
+<meta property="og:title" content="desINSTA: seu celular tem bateria. Você também.">
+<meta property="og:description" content="O feed descarrega a sua Bateria. A vida longe dele recarrega. 3 dias grátis.">
+<meta property="og:image" content="https://desinsta.app/assets/compartilhar.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A Bateria do desINSTA pedindo tomada, ao lado de uma mulher acordada de madrugada no celular">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://desinsta.app/assets/compartilhar.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
@@ -17,7 +31,7 @@
 
 <header class="topo">
   <div class="topo-dentro">
-    <a class="marca" href="#conteudo" aria-label="Desinsta, voltar ao começo"><img src="assets/logo.svg" alt="Desinsta" width="152" height="40"></a>
+    <a class="marca" href="#conteudo" aria-label="desINSTA, voltar ao começo"><img src="assets/logo.svg" alt="desINSTA" width="152" height="40"></a>
     <nav class="menu" aria-label="Seções da página">
       <a href="#como-funciona">Como funciona</a>
       <a href="#recursos">Recursos</a>
@@ -32,12 +46,13 @@
 
   <!-- ===================================================== começo -->
   <section class="heroi" aria-labelledby="heroi-titulo">
-    <div class="heroi-palco janela">
-      <div class="cena" aria-hidden="true">
-        <img src="assets/cenarios/cenario-4-dia-de-sol.svg" alt="" width="390" height="844" class="ligada">
-      </div>
+    <div class="heroi-palco janela heroi-foto">
+      <img class="foto" src="assets/fotos/madrugada.jpg" alt="Uma mulher deitada na cama, de madrugada, com a máscara de dormir na testa e o rosto iluminado pelo celular" width="1000" height="1500" fetchpriority="high">
+      <div class="foto-sombra" aria-hidden="true"></div>
+      <span class="adesivo adesivo-hora" aria-hidden="true">02:14</span>
+      <span class="adesivo adesivo-feed" aria-hidden="true">Só mais um vídeo.</span>
       <div class="bateria-lugar"></div>
-      <button class="balao" type="button" aria-label="Ouvir outra fala da Bateria"><span class="balao-fala" aria-live="polite">Oi! Eu sou a sua Bateria. Pode me cutucar.</span></button>
+      <button class="balao" type="button" aria-label="Ouvir outra fala da Bateria"><span class="balao-fala" aria-live="polite">Tô pedindo tomada...</span></button>
     </div>
 
     <div class="heroi-texto">
@@ -46,7 +61,7 @@
     </div>
     <div class="heroi-espaco" aria-hidden="true"></div>
     <div class="heroi-folha">
-      <p class="heroi-sub">O Desinsta transforma seu tempo de tela numa Bateria: o feed descarrega, a vida fora dele recarrega.</p>
+      <p class="heroi-sub">O desINSTA transforma seu tempo de tela numa Bateria: o feed descarrega, a vida fora dele recarrega.</p>
       <div class="lista-campos">
         <a class="botao-principal" href="#como-funciona">Ver como funciona</a>
       </div>
@@ -57,7 +72,10 @@
   <!-- ===================================================== a história da Bateria (rolar a página descarrega) -->
   <section class="historia" id="como-funciona" aria-labelledby="historia-titulo" data-faixa="4">
     <div class="historia-fixo">
-      <div class="historia-palco janela">
+      <div class="historia-palco">
+       <div class="mao">
+        <img class="mao-foto" src="assets/fotos/celular-na-mao.jpg" alt="Uma mão segurando o celular; na tela, a Bateria do desINSTA" width="1200" height="2133" loading="lazy">
+        <div class="mao-tela janela">
         <div class="cena" aria-hidden="true">
           <img src="assets/cenarios/cenario-0-apagao.svg" alt="" width="390" height="844" data-f="0" loading="lazy">
           <img src="assets/cenarios/cenario-1-noite.svg" alt="" width="390" height="844" data-f="1" loading="lazy">
@@ -66,6 +84,9 @@
           <img src="assets/cenarios/cenario-4-dia-de-sol.svg" alt="" width="390" height="844" data-f="4" class="ligada">
         </div>
         <div class="bateria-lugar"></div>
+        <span class="mao-entalhe" aria-hidden="true"></span>
+        </div>
+       </div>
         <p class="carga-chip" aria-hidden="true">
           <span class="carga-pilha"><span class="carga-pilha-cheio"></span></span>
           <span class="carga-num">100%</span>
@@ -98,7 +119,7 @@
             <p class="fonte">Fonte: Statista, com dados da DataReportal.</p>
           </li>
           <li class="passo" data-de="0.56">
-            <p class="olho">Com o Desinsta</p>
+            <p class="olho">Com o desINSTA</p>
             <h3>Abriu o app bloqueado? Ela aparece antes.</h3>
             <p>Na hora da sua regra, a Bateria entra no lugar do feed. Desistiu de abrir? Ganha carga.</p>
             <p class="ganho">+2% a cada desistência</p>
@@ -116,7 +137,7 @@
           <li class="passo" data-de="0.90">
             <h3>Carregadona de novo.</h3>
             <p>Sem sermão e sem culpa: a Bateria mostra como você está, e você decide o que fazer.</p>
-            <a class="link-seta" href="#recursos">Ver as telas do app</a>
+            <a class="link-seta" href="#tempo">O que fazer com o tempo de volta</a>
           </li>
         </ol>
         <div class="passos-pontos" aria-hidden="true"></div>
@@ -124,40 +145,44 @@
     </div>
   </section>
 
-  <!-- ===================================================== atrito: bloqueio, liberação e foco -->
-  <section class="atrito largura" id="recursos" aria-labelledby="atrito-titulo">
+  <!-- ===================================================== o tempo de volta: o que dá para fazer -->
+  <section class="tempo largura" id="tempo" aria-labelledby="tempo-titulo">
     <div class="cabeca">
-      <p class="olho">Na prática</p>
-      <h2 id="atrito-titulo">Um pouco de atrito, do jeito certo.</h2>
-      <p class="cabeca-sub">O Desinsta não proíbe nada. Ele põe uma pausa entre você e o feed, e quem decide é você.</p>
+      <p class="olho">Tempo de volta</p>
+      <h2 id="tempo-titulo">Como aproveitar o tempo recarregado.</h2>
+      <p class="cabeca-sub">Em média, quem usa internet no Brasil passa 5h19 por dia no celular. Se metade voltasse pra você, seriam <strong>2h40 todo dia</strong>. Dá pra:</p>
     </div>
-    <div class="trio">
-      <figure class="tela-item">
-        <div class="celular"><img src="assets/telas/bloqueio.jpg" alt="Tela de bloqueio do Desinsta: a Bateria, com 92%, pergunta se vale gastar a carga no app agora." width="390" height="844" loading="lazy"></div>
-        <figcaption>
-          <h3>A pausa antes do feed</h3>
-          <p>Na hora da regra, quem abre o app bloqueado encontra a Bateria. Fechar o app vale +2% de carga.</p>
-        </figcaption>
-      </figure>
-      <figure class="tela-item">
-        <div class="celular"><img src="assets/telas/liberacao.jpg" alt="Tela de liberação: 5 minutos por 4% de carga ou 15 minutos por 10%." width="390" height="844" loading="lazy"></div>
-        <figcaption>
-          <h3>Precisa mesmo? Libera.</h3>
-          <p>5 minutos custam 4% de carga. 15 minutos, 10%. Você vê o preço antes de decidir.</p>
-        </figcaption>
-      </figure>
-      <figure class="tela-item">
-        <div class="celular"><img src="assets/telas/foco.jpg" alt="Sessão de foco: a Bateria cochila recarregando, com a contagem regressiva embaixo." width="390" height="844" loading="lazy"></div>
-        <figcaption>
-          <h3>Foco que recarrega</h3>
-          <p>Escolha o tempo e o que fica travado. A cada 5 minutos de foco, +1% de carga.</p>
-        </figcaption>
-      </figure>
-    </div>
+    <ul class="ideias">
+      <li class="ideia">
+        <div class="ideia-foto"><img src="assets/fotos/ler.jpg" alt="Uma mulher de chapéu sorrindo com um livro, ao sol" width="900" height="600" loading="lazy"><span class="ideia-tempo">48 min</span></div>
+        <h3>Ler 2 capítulos de livro</h3>
+      </li>
+      <li class="ideia">
+        <div class="ideia-foto"><img src="assets/fotos/cachorro.jpg" alt="Duas pessoas passeando com os cachorros num campo" width="900" height="600" loading="lazy"><span class="ideia-tempo">48 min</span></div>
+        <h3>Caminhar 4 km com o cachorro</h3>
+      </li>
+      <li class="ideia">
+        <div class="ideia-foto"><img src="assets/fotos/correr.jpg" alt="Uma mulher correndo numa trilha no parque" width="900" height="600" loading="lazy"><span class="ideia-tempo">30 min</span></div>
+        <h3>Correr 5 km</h3>
+      </li>
+      <li class="ideia">
+        <div class="ideia-foto"><img src="assets/fotos/cozinhar.jpg" alt="Mãe e filha cozinhando juntas" width="900" height="600" loading="lazy"><span class="ideia-tempo">40 min</span></div>
+        <h3>Cozinhar sem pressa, junto de quem você gosta</h3>
+      </li>
+      <li class="ideia">
+        <div class="ideia-foto"><img src="assets/fotos/amigos.jpg" alt="Três amigas rindo juntas num piquenique" width="900" height="600" loading="lazy"><span class="ideia-tempo">1h</span></div>
+        <h3>Encontrar os amigos de verdade</h3>
+      </li>
+      <li class="ideia">
+        <div class="ideia-foto"><img src="assets/fotos/violao.jpg" alt="Dois amigos tocando violão em casa" width="900" height="600" loading="lazy"><span class="ideia-tempo">40 min</span></div>
+        <h3>Aprender uma música no violão</h3>
+      </li>
+    </ul>
+    <p class="tempo-fonte">5h19 por dia: Statista, com dados da DataReportal (2023).</p>
   </section>
 
   <!-- ===================================================== recursos em blocos -->
-  <section class="blocos largura" aria-labelledby="blocos-titulo">
+  <section class="blocos largura" id="recursos" aria-labelledby="blocos-titulo">
     <div class="cabeca">
       <p class="olho">Recursos</p>
       <h2 id="blocos-titulo">Do seu jeito, no seu horário.</h2>
@@ -177,7 +202,7 @@
       <article class="cartao c-verde">
         <h3>Na tela inicial</h3>
         <p>Veja a carga sem abrir o app e comece um foco com um toque.</p>
-        <div class="espiada espiada-widget"><img src="assets/telas/widgets.jpg" alt="Widget do Desinsta na tela inicial: a Bateria com 92%, o tempo de tela do dia e o botão Foco 25 min." width="350" height="420" loading="lazy"></div>
+        <div class="espiada espiada-widget"><img src="assets/telas/widgets.jpg" alt="Widget do desINSTA na tela inicial: a Bateria com 92%, o tempo de tela do dia e o botão Foco 25 min." width="350" height="420" loading="lazy"></div>
       </article>
       <article class="cartao c-rosa c-icones">
         <div class="icones-par" aria-hidden="true">
@@ -249,7 +274,7 @@
     </div>
     <div class="perguntas">
       <details>
-        <summary>Quando o Desinsta chega?</summary>
+        <summary>Quando o desINSTA chega?</summary>
         <p>O iPhone vem primeiro: o app está a caminho da App Store. O Android chega logo depois.</p>
       </details>
       <details>
@@ -257,8 +282,8 @@
         <p>Sim. No iPhone, a partir do iOS 17. No Android, a partir do Android 10.</p>
       </details>
       <details>
-        <summary>Como o Desinsta bloqueia os apps?</summary>
-        <p>Você escolhe os apps e as regras. Na hora da regra, quem abre o app vê a Bateria primeiro. No iPhone, quem bloqueia é o próprio sistema, pelo Tempo de Uso. No Android, o Desinsta aparece por cima do app.</p>
+        <summary>Como o desINSTA bloqueia os apps?</summary>
+        <p>Você escolhe os apps e as regras. Na hora da regra, quem abre o app vê a Bateria primeiro. No iPhone, quem bloqueia é o próprio sistema, pelo Tempo de Uso. No Android, o desINSTA aparece por cima do app.</p>
       </details>
       <details>
         <summary>O que é a carga da Bateria?</summary>
@@ -291,15 +316,16 @@
           <img src="assets/cenarios/cenario-3-fim-de-tarde.svg" alt="" width="390" height="844" class="ligada" loading="lazy">
         </div>
         <div class="bateria-lugar"></div>
-        <button class="balao" type="button" aria-label="Ouvir outra fala da Bateria"><span class="balao-fala" aria-live="polite">Te vejo no lançamento!</span></button>
+        <button class="balao" type="button" aria-label="Ouvir outra fala da Bateria"><span class="balao-fala" aria-live="polite">Bora recarregar comigo?</span></button>
       </div>
       <div class="final-texto">
-        <p class="olho">Em breve</p>
+        <p class="olho">3 dias grátis</p>
         <h2 id="final-titulo">Bora recarregar?</h2>
-        <p class="cabeca-sub">O Desinsta chega em breve na App Store. Dúvidas ou sugestões? Fale com a gente.</p>
+        <p class="cabeca-sub">Baixe o desINSTA, escolha os apps que mais te prendem e veja a sua Bateria subir. Os 3 primeiros dias são por nossa conta.</p>
         <div class="lista-campos">
-          <a class="botao-principal" href="suporte.html">Falar com a gente</a>
+          <span class="botao-principal loja-em-breve" aria-disabled="true">Chega em breve na App Store</span>
         </div>
+        <p class="lista-nota">Dúvidas ou sugestões? <a href="suporte.html">Fale com a gente</a>.</p>
       </div>
     </div>
   </section>
@@ -307,7 +333,7 @@
 
 <footer class="rodape">
   <div class="largura">
-    <img class="rodape-logo" src="assets/logo-escuro.svg" alt="Desinsta" width="532" height="158" loading="lazy">
+    <img class="rodape-logo" src="assets/logo-escuro.svg" alt="desINSTA" width="532" height="158" loading="lazy">
     <nav class="rodape-links" aria-label="Atalhos">
       <a href="#como-funciona">Como funciona</a>
       <a href="#recursos">Recursos</a>
@@ -317,7 +343,7 @@
       <a href="termos.html">Termos de uso</a>
       <a href="privacidade.html">Política de privacidade</a>
     </nav>
-    <p class="rodape-fim">© 2026 Desinsta · Feito no Brasil<br>Set4pet, CNPJ 51.270.341/0001-18<br><a href="mailto:desinsta.app@gmail.com">desinsta.app@gmail.com</a></p>
+    <p class="rodape-fim">© 2026 desINSTA · Feito no Brasil<br>Set4pet, CNPJ 51.270.341/0001-18<br><a href="mailto:desinsta.app@gmail.com">desinsta.app@gmail.com</a></p>
   </div>
 </footer>
 

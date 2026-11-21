@@ -170,6 +170,28 @@ a { color: inherit; }
   .heroi-sub { font-size: 20px; margin-bottom: 24px; }
 }
 
+/* começo com foto: a madrugada no feed, com a Bateria pedindo tomada por cima */
+.heroi-foto { background: #120d08; }
+.heroi-foto .foto { position: absolute; inset: 0; width: 100%; height: 100%; max-width: none; object-fit: cover; object-position: 55% 40%; }
+.foto-sombra {
+  position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(18,13,8,.78) 0%, rgba(18,13,8,.15) 34%, rgba(18,13,8,0) 55%, rgba(18,13,8,.55) 100%);
+}
+.adesivo {
+  position: absolute; z-index: 2; padding: 4px 12px;
+  background: var(--branco); color: var(--tinta); border: 2px solid var(--tinta); border-radius: 12px; box-shadow: 3px 3px 0 var(--tinta);
+  font-family: var(--f-titulo); font-weight: 600; font-size: 15px; white-space: nowrap;
+}
+.adesivo-hora { background: var(--tinta); color: var(--branco); border-color: var(--branco); box-shadow: 3px 3px 0 rgba(255,255,255,.35); transform: rotate(-4deg); }
+.adesivo-feed { transform: rotate(3deg); }
+.heroi-foto .balao { max-width: min(230px, calc(100% - 24px)); }
+.heroi-foto .balao.ao-lado::after { left: auto; right: 34px; }
+/* no celular o título fica sobre a foto: branco */
+@media (max-width: 639px) {
+  .heroi:has(.heroi-foto) h1 { color: var(--branco); text-shadow: 0 2px 12px rgba(0,0,0,.45); }
+  .heroi:has(.heroi-foto) h1 .destaque { color: var(--tinta); text-shadow: none; }
+}
+
 /* ------------------------------------------------------------- lista de espera (formulário) */
 .lista-campos { display: flex; flex-wrap: wrap; gap: 10px; }
 .lista-campos input {
@@ -195,7 +217,14 @@ a { color: inherit; }
 .historia[data-faixa="1"] { --h-fundo: #121A42; }
 .historia[data-faixa="0"] { --h-fundo: #1F2229; }
 .historia-fixo { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
-.historia-palco { position: absolute; inset: 0; background: #5DBDF7; }
+.historia-palco { position: absolute; inset: 0; background: var(--h-fundo); transition: background-color .6s ease; }
+/* a mão com o celular (foto do Pexels, recortada em volta do celular: x 180 a 1050, y 180 a 1640 de 1200 × 2133);
+   a tela do celular é a janela com o cenário e a Bateria */
+.mao { position: absolute; aspect-ratio: 870 / 1460; overflow: hidden; border-radius: 28px; border: 3px solid var(--tinta); box-shadow: 6px 6px 0 var(--tinta); background: #3b3c3f; }
+.mao-foto { position: absolute; left: -20.69%; top: -12.33%; width: 137.93%; height: 146.1%; max-width: none; }
+.mao-tela { position: absolute; left: 17.93%; top: 8.22%; width: 63.45%; height: 82.74%; border-radius: 11% / 5.4%; background: #5DBDF7; }
+.mao-entalhe { position: absolute; z-index: 3; left: 32%; top: 0; width: 36%; height: 3.4%; background: #0d0d0f; border-radius: 0 0 14px 14px; }
+.historia[data-faixa="1"] .mao, .historia[data-faixa="0"] .mao { border-color: var(--creme); box-shadow: 6px 6px 0 rgba(0, 0, 0, .45); }
 .carga-chip {
   position: absolute; z-index: 4; top: calc(env(safe-area-inset-top, 0px) + 16px); left: 50%; transform: translateX(-50%);
   display: flex; align-items: center; gap: 10px; padding: 6px 16px 6px 12px; white-space: nowrap;
@@ -248,8 +277,9 @@ a { color: inherit; }
     display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; column-gap: 72px;
     max-width: 1160px; margin: 0 auto; padding-left: var(--calha-e); padding-right: var(--calha-d); overflow: visible;
   }
-  .historia-palco { position: relative; inset: auto; height: min(84vh, 760px); border: 3px solid var(--tinta); border-radius: 36px; box-shadow: 8px 8px 0 var(--tinta); }
-  .historia[data-faixa="1"] .historia-palco, .historia[data-faixa="0"] .historia-palco { border-color: var(--creme); box-shadow: 8px 8px 0 rgba(0, 0, 0, .45); }
+  .historia-palco { position: relative; inset: auto; height: min(84vh, 760px); aspect-ratio: 870 / 1460; justify-self: center; background: none; }
+  .historia-palco .mao { inset: 0; width: 100%; height: 100%; border-radius: 36px; box-shadow: 8px 8px 0 var(--tinta); }
+  .historia[data-faixa="1"] .historia-palco .mao, .historia[data-faixa="0"] .historia-palco .mao { box-shadow: 8px 8px 0 rgba(0, 0, 0, .45); }
   .carga-chip { left: 20px; top: 20px; transform: none; }
   .historia-folha { position: relative; left: auto; right: auto; bottom: auto; max-width: 520px; margin: 0; padding: 30px 32px 24px; border-radius: 30px; box-shadow: 8px 8px 0 var(--tinta); }
   .historia[data-faixa="1"] .historia-folha, .historia[data-faixa="0"] .historia-folha { box-shadow: 8px 8px 0 rgba(0, 0, 0, .45); }
@@ -258,27 +288,31 @@ a { color: inherit; }
   .passo p { font-size: 19px; }
 }
 
-/* ------------------------------------------------------------- atrito: três telas */
-.atrito { padding-top: 104px; padding-bottom: 56px; }
-.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px; }
-.tela-item { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 28px; text-align: center; }
-.celular {
-  width: min(100%, 272px); aspect-ratio: 390 / 844; overflow: hidden;
-  border: 3px solid var(--tinta); border-radius: 40px; box-shadow: 8px 8px 0 var(--tinta); background: var(--tinta);
+/* ------------------------------------------------------------- o tempo de volta: fotos do que dá para fazer */
+.tempo { padding-top: 104px; padding-bottom: 56px; }
+.tempo .cabeca-sub strong { color: var(--tinta); }
+.ideias { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 28px; }
+.ideia { margin: 0; }
+.ideia-foto {
+  position: relative; aspect-ratio: 3 / 2; border: 3px solid var(--tinta); border-radius: 26px; box-shadow: 6px 6px 0 var(--tinta);
+  overflow: hidden; background: var(--branco);
 }
-.celular img { display: block; width: 100%; height: 100%; object-fit: cover; }
-.tela-item:nth-child(1) .celular { transform: rotate(-2deg); }
-.tela-item:nth-child(3) .celular { transform: rotate(2deg); }
-.tela-item h3 { font-size: 26px; margin-bottom: 8px; }
-.tela-item p { color: var(--texto-2); max-width: 34ch; margin-inline: auto; }
-@media (max-width: 759px) {
-  .trio { grid-template-columns: minmax(0, 1fr); gap: 40px; }
-  .tela-item { flex-direction: row; align-items: center; text-align: left; gap: 20px; }
-  .tela-item:nth-child(2) { flex-direction: row-reverse; }
-  .celular { width: 42%; flex: none; border-radius: 24px; box-shadow: 5px 5px 0 var(--tinta); }
-  .tela-item figcaption { min-width: 0; }
-  .tela-item h3 { font-size: 22px; }
-  .tela-item p { font-size: 15.5px; }
+.ideia:nth-child(3n+1) .ideia-foto { transform: rotate(-1.5deg); }
+.ideia:nth-child(3n) .ideia-foto { transform: rotate(1.5deg); }
+.ideia-foto img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ideia-tempo {
+  position: absolute; left: 12px; top: 12px; padding: 4px 12px;
+  background: var(--verde); color: var(--tinta); border: 2px solid var(--tinta); border-radius: 999px; box-shadow: 3px 3px 0 var(--tinta);
+  font-family: var(--f-titulo); font-weight: 600; font-size: 16px;
+}
+.ideia h3 { margin-top: 16px; font-size: 22px; line-height: 1.2; text-wrap: balance; }
+.tempo-fonte { margin-top: 32px; font-size: 13px; color: var(--texto-apagado); text-align: center; }
+@media (max-width: 1023px) { .ideias { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px 18px; } }
+@media (max-width: 639px) {
+  .ideias { gap: 24px 14px; }
+  .ideia-foto { border-radius: 18px; box-shadow: 4px 4px 0 var(--tinta); }
+  .ideia-tempo { left: 8px; top: 8px; padding: 2px 9px; font-size: 13.5px; }
+  .ideia h3 { margin-top: 10px; font-size: 16.5px; }
 }
 
 /* ------------------------------------------------------------- recursos em blocos */
@@ -419,3 +453,7 @@ a { color: inherit; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
+
+/* fim da página: o botão da loja enquanto o app não está nela (no dia da aprovação vira o selo "Baixar na App Store") */
+.loja-em-breve { cursor: default; opacity: .85; }
+.loja-em-breve:active { transform: none; }

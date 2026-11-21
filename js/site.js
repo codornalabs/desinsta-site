@@ -73,21 +73,44 @@
   if (heroi) {
     const palco = $('.heroi-palco', heroi), folha = $('.heroi-folha', heroi), balao = $('.balao', palco);
     const papo = conversa(balao, [
-      'Oi! Eu sou a sua Bateria. Pode me cutucar.',
+      'Tô pedindo tomada...',
+      'Eram só 5 minutinhos, lembra?',
       'O feed me descarrega. A vida fora dele me recarrega.',
-      'Tô ligada no 220 hoje. Bora manter?',
-      'Hehe. Faz cócegas.',
-      'Me leva no seu bolso quando eu chegar?',
+      'Larga o celular comigo? Amanhã você me agradece.',
     ], 'Ei! Assim eu fico tonta.');
-    const j = Janela(palco, {
-      area: heroi,
-      pes: (W, H) => (celular() ? folha.offsetTop - 16 : H * (computador() ? 0.84 : 0.8)),
-      maxBateria: () => (celular() ? 1.15 : 1.45),
-      observarTambem: [folha, heroi],
-      bateria: { carga: 92, aoTocar: () => papo.proxima(), aoQuadro: (sim) => papo.vigiar(sim) },
+    const lugar = $('.bateria-lugar', palco), hora = $('.adesivo-hora', palco), feed = $('.adesivo-feed', palco);
+    const bat = window.BateriaSite(lugar, {
+      observar: palco, area: heroi, carga: 22,
+      aoTocar: () => papo.proxima(), aoQuadro: (sim) => papo.vigiar(sim),
     });
-    balao.addEventListener('click', () => { j.bat.tocar(); papo.proxima(); });
-    setTimeout(() => j.bat.gesto('wave'), 700);
+    // a Bateria fica no canto de baixo, à direita, em cima da foto; o balão acima dela, encostado na direita
+    function arrumar() {
+      const W = palco.clientWidth, H = palco.clientHeight;
+      if (!W || !H) return;
+      const largura = Math.round(Math.min(celular() ? 150 : 190, W * 0.42));
+      const chao = celular() ? folha.offsetTop - 6 : H - 10;
+      const topo = chao - largura * 0.865;
+      lugar.style.width = largura + 'px';
+      lugar.style.left = Math.round(W - largura - (celular() ? 4 : 14)) + 'px';
+      lugar.style.top = Math.round(topo) + 'px';
+      balao.classList.add('ao-lado');
+      balao.style.left = 'auto';
+      balao.style.right = (celular() ? 12 : 22) + 'px';
+      balao.style.transform = 'none';
+      balao.style.bottom = Math.round(H - topo - largura * 0.12 + 10) + 'px';
+      const cima = celular() ? heroi.querySelector('.heroi-texto').offsetTop + heroi.querySelector('.heroi-texto').offsetHeight + 18 : 24;
+      hora.style.left = (celular() ? 18 : 24) + 'px'; hora.style.top = cima + 'px';
+      // no celular, os adesivos descem para o canto de baixo, à esquerda (o rosto fica no meio da foto)
+      if (celular()) {
+        hora.style.top = Math.round(chao - 92) + 'px';
+        feed.style.left = (celular() ? 18 : 24) + 'px'; feed.style.top = Math.round(chao - 48) + 'px';
+      } else { feed.style.left = '24px'; feed.style.top = (cima + 44) + 'px'; }
+    }
+    if ('ResizeObserver' in window) { const ro = new ResizeObserver(arrumar); [palco, folha, heroi].forEach((x) => ro.observe(x)); }
+    arrumadores.push(arrumar);
+    arrumar();
+    balao.addEventListener('click', () => { bat.tocar(); papo.proxima(); });
+    setTimeout(() => bat.gesto('sigh'), 900);
   }
 
   // ---------------------------------------------------------------- a história: rolar a página descarrega a Bateria
@@ -146,13 +169,27 @@
     medir();
     arrumadores.push(medir);
 
-    Janela(palco, {
+    // a mão com o celular: no computador ela enche o cartão (CSS); no celular e no tablet ela cabe entre o
+    // chip da carga e a folha na altura do passo mais alto (a folha muda, a mão não pula)
+    const mao = $('.mao', palco), tela = $('.mao-tela', palco), chip = $('.carga-chip', historia);
+    function arrumarMao() {
+      if (computador()) { mao.removeAttribute('style'); return; }
+      const cima = chip.offsetTop + chip.offsetHeight + 14;
+      const baixo = folha.offsetTop + folha.offsetHeight - (folha.offsetHeight - passosBox.offsetHeight + alturaMax) - 16;
+      const W = palco.clientWidth;
+      let h = Math.max(160, baixo - cima), w = h * 870 / 1460;
+      if (w > W - 32) { w = W - 32; h = w * 1460 / 870; }
+      Object.assign(mao.style, { width: w.toFixed(1) + 'px', height: h.toFixed(1) + 'px', left: ((W - w) / 2).toFixed(1) + 'px', top: (cima + Math.max(0, (baixo - cima - h) / 2)).toFixed(1) + 'px' });
+    }
+    if ('ResizeObserver' in window) { const ro = new ResizeObserver(arrumarMao); [palco, folha].forEach((x) => ro.observe(x)); }
+    arrumadores.push(arrumarMao);
+    arrumarMao();
+
+    Janela(tela, {
       area: palco,
-      // no celular, os pés ficam acima da folha na altura do passo mais alto (a folha muda, ela não pula)
-      pes: (W, H) => (computador() ? H * 0.82
-        : folha.offsetTop + folha.offsetHeight - (folha.offsetHeight - passosBox.offsetHeight + alturaMax) - 18),
-      maxBateria: () => (computador() ? 1.6 : celular() ? 1.5 : 2.2),
-      observarTambem: [folha],
+      // dentro da tela do celular, o cenário inteiro, com os pés a 80% da altura
+      pes: (W, H) => H * 0.8,
+      observarTambem: [mao],
       bateria: {
         carga: 100,
         // antes dos passos do motor: a carga segue a rolagem, e o modo muda quando a pessoa entra em outra parte
@@ -179,12 +216,13 @@
     });
   }
 
-  // ---------------------------------------------------------------- fim: lista de espera
+  // ---------------------------------------------------------------- fim: chama para baixar
   const final = $('.final');
   if (final) {
     const palco = $('.final-palco', final), balao = $('.balao', palco);
     const papo = conversa(balao, [
-      'Te vejo no lançamento!',
+      'Bora recarregar comigo?',
+      'Os 3 primeiros dias são por minha conta.',
       'Enquanto isso, larga o feed um pouquinho?',
       'Hehe. Faz cócegas.',
     ], 'Ei! Assim eu fico tonta.');
