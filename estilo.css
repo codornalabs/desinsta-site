@@ -464,3 +464,16 @@ a { color: inherit; }
 /* fim da página: o botão da loja enquanto o app não está nela (no dia da aprovação vira o selo "Baixar na App Store") */
 .loja-em-breve { cursor: default; opacity: .85; }
 .loja-em-breve:active { transform: none; }
+
+/* espaço entre as partes no celular: mais justo (o do computador fica como está) */
+@media (max-width: 639px) {
+  .cabeca { margin-bottom: 28px; }
+  .tempo { padding-top: 56px; padding-bottom: 24px; }
+  .tempo-fonte { margin-top: 20px; }
+  .blocos { padding-top: 40px; padding-bottom: 56px; }
+  .preco { padding-block: 48px; }
+  .duvidas { padding-top: 56px; padding-bottom: 56px; }
+  .final { padding-block: 56px 48px; }
+  .final-dentro { gap: 28px; }
+  .rodape { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 40px); }
+}
