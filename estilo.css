@@ -225,6 +225,13 @@ a { color: inherit; }
 .mao-tela { position: absolute; left: 17.93%; top: 8.22%; width: 63.45%; height: 82.74%; border-radius: 11% / 5.4%; background: #5DBDF7; }
 .mao-entalhe { position: absolute; z-index: 3; left: 32%; top: 0; width: 36%; height: 3.4%; background: #0d0d0f; border-radius: 0 0 14px 14px; }
 .historia[data-faixa="1"] .mao, .historia[data-faixa="0"] .mao { border-color: var(--creme); box-shadow: 6px 6px 0 rgba(0, 0, 0, .45); }
+/* no celular e no tablet, a foto da mão enche a tela inteira (o JS põe a foto e a tela do celular no lugar) */
+@media (max-width: 1023px) {
+  .historia-palco { background: #2e2f32; }
+  .historia-palco .mao { inset: 0; border: 0; border-radius: 0; box-shadow: none; aspect-ratio: auto; }
+  .historia-palco .mao-tela { z-index: 2; }
+  .historia-palco .mao::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,0) 18%, rgba(0,0,0,0) 70%, rgba(0,0,0,.35)); }
+}
 .carga-chip {
   position: absolute; z-index: 4; top: calc(env(safe-area-inset-top, 0px) + 16px); left: 50%; transform: translateX(-50%);
   display: flex; align-items: center; gap: 10px; padding: 6px 16px 6px 12px; white-space: nowrap;

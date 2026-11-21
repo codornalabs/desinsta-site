@@ -173,13 +173,20 @@
     // chip da carga e a folha na altura do passo mais alto (a folha muda, a mão não pula)
     const mao = $('.mao', palco), tela = $('.mao-tela', palco), chip = $('.carga-chip', historia);
     function arrumarMao() {
-      if (computador()) { mao.removeAttribute('style'); return; }
-      const cima = chip.offsetTop + chip.offsetHeight + 14;
-      const baixo = folha.offsetTop + folha.offsetHeight - (folha.offsetHeight - passosBox.offsetHeight + alturaMax) - 16;
-      const W = palco.clientWidth;
-      let h = Math.max(160, baixo - cima), w = h * 870 / 1460;
-      if (w > W - 32) { w = W - 32; h = w * 1460 / 870; }
-      Object.assign(mao.style, { width: w.toFixed(1) + 'px', height: h.toFixed(1) + 'px', left: ((W - w) / 2).toFixed(1) + 'px', top: (cima + Math.max(0, (baixo - cima - h) / 2)).toFixed(1) + 'px' });
+      const foto = $('.mao-foto', mao);
+      if (computador()) { [mao, foto, tela].forEach((x) => x.removeAttribute('style')); return; }
+      // no celular e no tablet, a foto enche a tela e a tela do celular da foto fica entre o chip e a folha
+      // (na foto de 1200 × 2133, a tela do celular vai de x 336 a 888 e de y 300 a 1508)
+      const cima = chip.offsetTop + chip.offsetHeight + 10;
+      const baixo = folha.offsetTop + folha.offsetHeight - (folha.offsetHeight - passosBox.offsetHeight + alturaMax) - 12;
+      const W = palco.clientWidth, H = palco.clientHeight;
+      let s = Math.max(120, baixo - cima) / 1208;
+      s = Math.min(s, (W - 24) / 552);
+      const x0 = W / 2 - 612 * s, y0 = cima + Math.max(0, (baixo - cima - 1208 * s) / 2) - 300 * s;
+      const px = (n) => n.toFixed(1) + 'px';
+      Object.assign(mao.style, { left: '0px', top: '0px', width: px(W), height: px(H) });
+      Object.assign(foto.style, { left: px(x0), top: px(y0), width: px(1200 * s), height: px(2133 * s) });
+      Object.assign(tela.style, { left: px(x0 + 336 * s), top: px(y0 + 300 * s), width: px(552 * s), height: px(1208 * s) });
     }
     if ('ResizeObserver' in window) { const ro = new ResizeObserver(arrumarMao); [palco, folha].forEach((x) => ro.observe(x)); }
     arrumadores.push(arrumarMao);
