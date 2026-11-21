@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap">
-<link rel="stylesheet" href="estilo.css?v=20261121c">
+<link rel="stylesheet" href="estilo.css?v=20261121d">
 </head>
 <body>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
@@ -35,7 +35,6 @@
     <nav class="menu" aria-label="Seções da página">
       <a href="#como-funciona">Como funciona</a>
       <a href="#recursos">Recursos</a>
-      <a href="#preco">Preço</a>
       <a href="#duvidas">Dúvidas</a>
     </nav>
     <a class="botao-pilula" href="suporte.html">Suporte</a>
@@ -65,7 +64,11 @@
       <div class="lista-campos">
         <a class="botao-principal" href="#como-funciona">Ver como funciona</a>
       </div>
-      <p class="lista-nota">Chega em breve na App Store, com 3 dias grátis.</p>
+      <p class="lista-nota selos-nota">Em breve no iPhone e no Android, com 3 dias grátis.</p>
+      <div class="selos-lojas" aria-label="Em breve na App Store e no Google Play">
+        <span class="selo-loja"><img src="assets/lojas/app-store-pt-br.svg" alt="Baixar na App Store" width="120" height="40"></span>
+        <span class="selo-loja"><img src="assets/lojas/google-play-pt-br.png" alt="Disponível no Google Play" width="135" height="40"></span>
+      </div>
     </div>
   </section>
 
@@ -231,41 +234,6 @@
     </div>
   </section>
 
-  <!-- ===================================================== preço -->
-  <section class="preco" id="preco" aria-labelledby="preco-titulo">
-    <div class="largura">
-      <div class="cabeca">
-        <p class="olho">Preço</p>
-        <h2 id="preco-titulo">Comece com 3 dias grátis.</h2>
-        <p class="cabeca-sub">Tudo liberado no teste. Depois, assine ou compre o app.</p>
-      </div>
-      <div class="planos">
-        <article class="plano plano-destaque">
-          <p class="plano-selo">44% mais barato</p>
-          <h3>Anual</h3>
-          <p class="plano-preco">R$ 99,90<span> por ano</span></p>
-          <p class="plano-mes">Dá R$ 8,33 por mês</p>
-        </article>
-        <article class="plano">
-          <h3>Mensal</h3>
-          <p class="plano-preco">R$ 14,90<span> por mês</span></p>
-          <p class="plano-mes">Cancele quando quiser</p>
-        </article>
-        <article class="plano">
-          <h3>Vitalício</h3>
-          <p class="plano-preco">R$ 149,90<span> uma vez</span></p>
-          <p class="plano-mes">Sem mensalidade</p>
-        </article>
-      </div>
-      <ul class="preco-itens">
-        <li>A gente avisa 2 dias antes da primeira cobrança.</li>
-        <li>Cancelou antes, não paga nada.</li>
-        <li>Cobrança pela App Store ou pelo Google Play.</li>
-      </ul>
-      <p class="preco-nota">Valores previstos para o lançamento.</p>
-    </div>
-  </section>
-
   <!-- ===================================================== dúvidas -->
   <section class="duvidas largura" id="duvidas" aria-labelledby="duvidas-titulo">
     <div class="cabeca">
@@ -322,8 +290,9 @@
         <p class="olho">3 dias grátis</p>
         <h2 id="final-titulo">Bora recarregar?</h2>
         <p class="cabeca-sub">Baixe o desINSTA, escolha os apps que mais te prendem e veja a sua Bateria subir. Os 3 primeiros dias são por nossa conta.</p>
-        <div class="lista-campos">
-          <span class="botao-principal loja-em-breve" aria-disabled="true">Chega em breve na App Store</span>
+        <div class="selos-lojas" aria-label="Em breve na App Store e no Google Play">
+          <span class="selo-loja"><img src="assets/lojas/app-store-pt-br.svg" alt="Baixar na App Store" width="120" height="40"></span>
+          <span class="selo-loja"><img src="assets/lojas/google-play-pt-br.png" alt="Disponível no Google Play" width="135" height="40"></span>
         </div>
         <p class="lista-nota">Dúvidas ou sugestões? <a href="suporte.html">Fale com a gente</a>.</p>
       </div>
@@ -337,7 +306,6 @@
     <nav class="rodape-links" aria-label="Atalhos">
       <a href="#como-funciona">Como funciona</a>
       <a href="#recursos">Recursos</a>
-      <a href="#preco">Preço</a>
       <a href="#duvidas">Dúvidas</a>
       <a href="suporte.html">Suporte</a>
       <a href="termos.html">Termos de uso</a>
@@ -348,8 +316,8 @@
 </footer>
 
 
-<script src="assets/bateria-core.js?v=20261121c"></script>
-<script src="js/bateria-site.js?v=20261121c"></script>
-<script src="js/site.js?v=20261121c"></script>
+<script src="assets/bateria-core.js?v=20261121d"></script>
+<script src="js/bateria-site.js?v=20261121d"></script>
+<script src="js/site.js?v=20261121d"></script>
 </body>
 </html>

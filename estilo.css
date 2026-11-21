@@ -477,3 +477,12 @@ a { color: inherit; }
   .final-dentro { gap: 28px; }
   .rodape { padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 40px); }
 }
+
+/* selos oficiais das lojas (sem alterar o desenho; espaço livre em volta e a mesma altura nos dois) */
+.selos-lojas { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 10px; }
+.selo-loja { display: inline-flex; }
+.selo-loja img { display: block; height: 48px; width: auto; }
+.heroi-folha .selos-lojas { justify-content: center; }
+.final .selos-lojas { margin-top: 24px; }
+@media (min-width: 1024px) { .heroi-folha .selos-lojas { justify-content: flex-start; } .selo-loja img { height: 52px; } }
+@media (max-width: 639px) { .heroi-folha .selos-nota { display: none; } .heroi-folha .selos-lojas { margin-top: 12px; } }
