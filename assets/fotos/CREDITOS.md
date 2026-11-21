@@ -14,3 +14,5 @@ Antes de ir ao ar no domínio, passar pelo advogado (direito de imagem: Código 
 | `correr.jpg` | mulher correndo numa trilha no parque | (autor na página do Pexels) | https://www.pexels.com/photo/20033330/ |
 | `amigos.jpg` | três amigas rindo juntas num piquenique | (autor na página do Pexels) | https://www.pexels.com/photo/7658703/ |
 | `violao.jpg` | dois amigos tocando violão em casa | (autor na página do Pexels) | https://www.pexels.com/photo/4670173/ |
+| `trabalhar.jpg` | homem de óculos concentrado, digitando no notebook num escritório | fauxels | https://www.pexels.com/photo/3184461/ |
+| `estudar.jpg` | mulher concentrada fazendo anotações no caderno, com livros na estante atrás | (autor na página do Pexels) | https://www.pexels.com/photo/7516381/ |
