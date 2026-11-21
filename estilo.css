@@ -216,7 +216,7 @@ a { color: inherit; }
 .historia[data-faixa="2"] { --h-fundo: #ECE4FA; }
 .historia[data-faixa="1"] { --h-fundo: #121A42; }
 .historia[data-faixa="0"] { --h-fundo: #1F2229; }
-.historia-fixo { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; }
+.historia-fixo { position: sticky; top: 0; height: 100vh; height: 100dvh; overflow: hidden; }
 .historia-palco { position: absolute; inset: 0; background: var(--h-fundo); transition: background-color .6s ease; }
 /* a mão com o celular (foto do Pexels, recortada em volta do celular: x 180 a 1050, y 180 a 1640 de 1200 × 2133);
    a tela do celular é a janela com o cenário e a Bateria */
